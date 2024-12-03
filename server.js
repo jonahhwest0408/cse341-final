@@ -15,21 +15,22 @@ const app = express();
 app.use(express.json());
 
 const swaggerOptions = {
-  swaggerDefinition: {
-    info: {
-      title: 'Movie API',
-      version: '1.0.0',
-      description: 'API for managing movies in the system', 
-    },
-    tags: [
-      {
-        name: 'Users',
-        description: 'Operations related to users',
+    swaggerDefinition: {
+      openapi: '3.0.0', 
+      info: {
+        title: 'Movie API',
+        version: '1.0.0',
+        description: 'API for managing movies in the system',
       },
-    ],
-  },
-  apis: ['./routes/userRoutes.js'], 
-};
+      tags: [
+        {
+          name: 'Users',
+          description: 'Operations related to users',
+        },
+      ],
+    },
+    apis: ['./routes/userRoutes.js'],
+  };
 
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
