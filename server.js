@@ -7,6 +7,7 @@ const swaggerUi = require('swagger-ui-express');
 dotenv.config();
 
 const userRoutes = require('./routes/userRoutes');
+const movieRoutes = require('./routes/movies');
 
 const app = express();
 
@@ -27,9 +28,16 @@ const swaggerOptions = {
           name: 'Users',
           description: 'Operations related to users',
         },
+        {
+          name: 'Movies',
+          description: 'Information related to movies'
+        },
       ],
     },
-    apis: ['./routes/userRoutes.js'],
+    apis: [
+      './routes/userRoutes.js', 
+      './routes/movies.js'
+    ],
   };
 
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
@@ -37,6 +45,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 // Routes
 app.use('/api', userRoutes); 
+app.use('/api', movieRoutes);
 
 // MongoDB connection
 mongoose
