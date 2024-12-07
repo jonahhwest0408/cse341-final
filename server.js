@@ -8,6 +8,8 @@ dotenv.config();
 
 const userRoutes = require('./routes/userRoutes');
 const movieRoutes = require('./routes/movies');
+const recommendationRoutes = require('./routes/recommendations');
+const reviewRoutes = require('/routes/reviews');
 
 const app = express();
 
@@ -30,13 +32,18 @@ const swaggerOptions = {
         },
         {
           name: 'Movies',
-          description: 'Information related to movies'
+          description: 'Operations related to movies'
+        },
+        {
+          name: 'Recommendations',
+          description: 'Operations related to recommendations'
         },
       ],
     },
     apis: [
       './routes/userRoutes.js', 
-      './routes/movies.js'
+      './routes/movies.js',
+      './routes/recommendations.js'
     ],
   };
 
@@ -46,6 +53,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 // Routes
 app.use('/api', userRoutes); 
 app.use('/api', movieRoutes);
+app.use('/api', recommendationRoutes);
 
 // MongoDB connection
 mongoose
