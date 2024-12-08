@@ -86,7 +86,7 @@ router.get('/movies', getAllMovies);
  *       500:
  *         description: Failed to create movie
  */
-router.post('/movies', isAuthenticated, createMovie);
+router.post('/movies', createMovie);
 
 /**
  * @swagger
@@ -132,7 +132,7 @@ router.post('/movies', isAuthenticated, createMovie);
  *       500:
  *         description: Failed to update movie
  */
-router.put('/movies/:id', isAuthenticated, updateMovie);
+router.put('/movies/:id', updateMovie);
 
 /**
  * @swagger
@@ -159,6 +159,6 @@ router.put('/movies/:id', isAuthenticated, updateMovie);
  *       500:
  *         description: Failed to delete movie
  */
-router.delete('/movies/:id', isAuthenticated, deleteMovie);
+router.delete('/movies/:id', deleteMovie);
 
 module.exports = router;

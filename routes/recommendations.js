@@ -69,7 +69,7 @@ router.get('/recommendations', getAllRecommendations);
  *       500:
  *         description: Failed to create movie
  */
-router.post('/recommendations', isAuthenticated, createRecommendation);
+router.post('/recommendations', createRecommendation);
 
 /**
  * @swagger
@@ -107,7 +107,7 @@ router.post('/recommendations', isAuthenticated, createRecommendation);
  *       500:
  *         description: Failed to update recommendation
  */
-router.put('/recommendations/:id', isAuthenticated, updateRecommendation);
+router.put('/recommendations/:id', updateRecommendation);
 
 /**
  * @swagger
@@ -134,6 +134,6 @@ router.put('/recommendations/:id', isAuthenticated, updateRecommendation);
  *       500:
  *         description: Failed to delete recommendation
  */
-router.delete('/recommendations/:id', isAuthenticated, deleteRecommendation);
+router.delete('/recommendations/:id', deleteRecommendation);
 
 module.exports = router;

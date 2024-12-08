@@ -74,7 +74,7 @@ router.get('/reviews', getAllReviews);
  *       500:
  *         description: Failed to create review
  */
-router.post('/reviews', isAuthenticated, createReview);
+router.post('/reviews', createReview);
 
 /**
  * @swagger
@@ -114,7 +114,7 @@ router.post('/reviews', isAuthenticated, createReview);
  *       500:
  *         description: Failed to update review
  */
-router.put('/reviews/:id', isAuthenticated, updateReview);
+router.put('/reviews/:id', updateReview);
 
 /**
  * @swagger
@@ -141,6 +141,6 @@ router.put('/reviews/:id', isAuthenticated, updateReview);
  *       500:
  *         description: Failed to delete review
  */
-router.delete('/reviews/:id', isAuthenticated, deleteReview);
+router.delete('/reviews/:id', deleteReview);
 
 module.exports = router;
