@@ -1,10 +1,13 @@
 const express = require('express');
+
 const {
   getAllMovies,
   createMovie,
   updateMovie,
   deleteMovie,
 } = require('../controllers/movies');
+
+//const { isAuthenticated } = require('../middleware/authenticate');
 
 const router = express.Router();
 
@@ -83,7 +86,7 @@ router.get('/movies', getAllMovies);
  *       500:
  *         description: Failed to create movie
  */
-router.post('/movies', createMovie);
+router.post('/movies', isAuthenticated, createMovie);
 
 /**
  * @swagger
@@ -129,7 +132,7 @@ router.post('/movies', createMovie);
  *       500:
  *         description: Failed to update movie
  */
-router.put('/movies/:id', updateMovie);
+router.put('/movies/:id', isAuthenticated, updateMovie);
 
 /**
  * @swagger
@@ -156,6 +159,6 @@ router.put('/movies/:id', updateMovie);
  *       500:
  *         description: Failed to delete movie
  */
-router.delete('/movies/:id', deleteMovie);
+router.delete('/movies/:id', isAuthenticated, deleteMovie);
 
 module.exports = router;

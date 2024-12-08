@@ -7,7 +7,7 @@ const {
   deleteRecommendation,
 } = require('../controllers/recommendations');
 
-const { isAuthenticated } = require('../middleware/authenticate');
+//const { isAuthenticated } = require('../middleware/authenticate');
 
 const router = express.Router();
 
