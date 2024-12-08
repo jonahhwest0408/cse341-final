@@ -114,7 +114,7 @@ router.put('/recommendations/:id', updateRecommendation);
  * /api/recommendations/{id}:
  *   delete:
  *     tags:
- *       - recommendations 
+ *       - Recommendations 
  *     summary: Delete a recommendation
  *     description: Delete a recommendation from the system by ID.
  *     parameters:
