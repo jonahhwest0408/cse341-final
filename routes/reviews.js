@@ -68,7 +68,7 @@ router.get('/reviews', getAllReviews);
  *                 type: string
  *     responses:
  *       201:
- *         description: review created successfully
+ *         description: Review created successfully
  *       400:
  *         description: Bad request
  *       500:

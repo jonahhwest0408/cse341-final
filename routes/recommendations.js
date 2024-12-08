@@ -62,12 +62,13 @@ router.get('/recommendations', getAllRecommendations);
  *                 type: string
  *               recommendation:
  *                 type: string
+ *     responses:
  *       201:
  *         description: Recommendation created successfully
  *       400:
  *         description: Bad request
  *       500:
- *         description: Failed to create movie
+ *         description: Failed to create recommendation
  */
 router.post('/recommendations', createRecommendation);
 
