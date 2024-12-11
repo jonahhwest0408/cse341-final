@@ -7,10 +7,8 @@ const {
   deleteReview,
 } = require('../controllers/reviews');
 
-//const { isAuthenticated } = require('../middleware/authenticate');
-
 const router = express.Router();
-
+const { isAuthenticated } = require('../middleware/authenticate');
 
 /**
  * @swagger
@@ -74,7 +72,7 @@ router.get('/reviews', getAllReviews);
  *       500:
  *         description: Failed to create review
  */
-router.post('/reviews', createReview);
+router.post('/reviews', isAuthenticated, createReview);
 
 /**
  * @swagger
@@ -114,7 +112,7 @@ router.post('/reviews', createReview);
  *       500:
  *         description: Failed to update review
  */
-router.put('/reviews/:id', updateReview);
+router.put('/reviews/:id', isAuthenticated, updateReview);
 
 /**
  * @swagger
@@ -141,6 +139,6 @@ router.put('/reviews/:id', updateReview);
  *       500:
  *         description: Failed to delete review
  */
-router.delete('/reviews/:id', deleteReview);
+router.delete('/reviews/:id', isAuthenticated, deleteReview);
 
 module.exports = router;

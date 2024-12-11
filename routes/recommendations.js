@@ -7,10 +7,8 @@ const {
   deleteRecommendation,
 } = require('../controllers/recommendations');
 
-//const { isAuthenticated } = require('../middleware/authenticate');
-
 const router = express.Router();
-
+const { isAuthenticated } = require('../middleware/authenticate');
 
 /**
  * @swagger
@@ -70,7 +68,7 @@ router.get('/recommendations', getAllRecommendations);
  *       500:
  *         description: Failed to create recommendation
  */
-router.post('/recommendations', createRecommendation);
+router.post('/recommendations', isAuthenticated, createRecommendation);
 
 /**
  * @swagger
@@ -108,7 +106,7 @@ router.post('/recommendations', createRecommendation);
  *       500:
  *         description: Failed to update recommendation
  */
-router.put('/recommendations/:id', updateRecommendation);
+router.put('/recommendations/:id', isAuthenticated, updateRecommendation);
 
 /**
  * @swagger
@@ -135,6 +133,6 @@ router.put('/recommendations/:id', updateRecommendation);
  *       500:
  *         description: Failed to delete recommendation
  */
-router.delete('/recommendations/:id', deleteRecommendation);
+router.delete('/recommendations/:id', isAuthenticated, deleteRecommendation);
 
 module.exports = router;

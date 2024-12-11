@@ -7,7 +7,7 @@ const {
 } = require('../controllers/userController');
 
 const router = express.Router();
-
+const { isAuthenticated } = require('../middleware/authenticate');
 
 /**
  * @swagger
@@ -67,7 +67,7 @@ router.get('/users', getAllUsers); // GET all users
  *       500:
  *         description: Failed to create user
  */
-router.post('/users', createUser); // POST create a user
+router.post('/users', isAuthenticated, createUser); // POST create a user
 
 /**
  * @swagger
@@ -105,7 +105,7 @@ router.post('/users', createUser); // POST create a user
  *       500:
  *         description: Failed to update user
  */
-router.put('/users/:id', updateUser); // PUT update a user
+router.put('/users/:id', isAuthenticated, updateUser); // PUT update a user
 
 /**
  * @swagger
@@ -132,6 +132,6 @@ router.put('/users/:id', updateUser); // PUT update a user
  *       500:
  *         description: Failed to delete user
  */
-router.delete('/users/:id', deleteUser); // DELETE a user
+router.delete('/users/:id', isAuthenticated, deleteUser); // DELETE a user
 
 module.exports = router;
