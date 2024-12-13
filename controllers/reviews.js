@@ -45,16 +45,16 @@ const createReview = async (req, res) => {
 // PUT update a review by ID
 const updateReview = async (req, res) => {
     const { id } = req.params;
-    const { title, movieTitle, starRating, description } = req.body;
+    const { username, movieTitle, starRating, description } = req.body;
   
-    if (!title && !movieTitle && !starRating && !description) {
+    if (!username && !movieTitle && !starRating && !description) {
       return res.status(400).json({ message: 'At least one field is required to update' });
     }
   
     try {
       const updatedReview = await Review.findByIdAndUpdate(
         id,
-        { title, movieTitle, starRating, description },
+        { username, movieTitle, starRating, description },
         { new: true, runValidators: true }
       );
   
